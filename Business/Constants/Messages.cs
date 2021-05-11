@@ -15,8 +15,10 @@ namespace Business.Constants
         public static string BulunamayanKullanici = "kullanici Bulunamadi";
         public static string TokenOlusturuldu = "Token Olusturuldu";
         public static string MevcutKullanici = "Kullanici Mevcut";
+        public static string Listelendi = "listelendi";
+        public static string UrunEklendi = "ürün eklendi";
 
-        public static string Listelendi { get; internal set; }
-        public static string UrunEklendi { get; internal set; }
+        public static string KategoriEklendi = "kategori Eklendi";
+        
     }
 }
