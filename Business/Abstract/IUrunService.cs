@@ -10,5 +10,6 @@ namespace Business.Abstract
     {
         IResult Add(Urun urun);
         IDataResult<List<Urun>> GetAll();
+        IDataResult<List<Urun>> GetAllByCategoryId(int kategoriId);
     }
 }

@@ -28,5 +28,10 @@ namespace Business.Concert
         {
             return new SuccessDataResult<List<Urun>>(_urunDal.GetAll(), Messages.Listelendi);
         }
+
+        public IDataResult<List<Urun>> GetAllByCategoryId(int id)
+        {
+            return new SuccessDataResult<List<Urun>>(_urunDal.GetAll(p => p.KategoriId == id));
+        }
     }
 }

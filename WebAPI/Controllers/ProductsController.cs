@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -23,6 +24,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
+         
             var result = _urunService.GetAll();
             if (result.Success)
             {
@@ -34,6 +36,17 @@ namespace WebAPI.Controllers
         public IActionResult Add(Urun urun)
         {
             var result = _urunService.Add(urun);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycategory")]
+        public IActionResult GetByCategory(int kategoriId)
+        {
+            var result = _urunService.GetAllByCategoryId(kategoriId);
             if (result.Success)
             {
                 return Ok(result);

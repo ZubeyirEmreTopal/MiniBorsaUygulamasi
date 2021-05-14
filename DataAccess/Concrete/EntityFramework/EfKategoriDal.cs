@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-   public class EfKategoriDal<T>:EfEntityRepositoryBase<Kategori,MiniBorsaContext>,IKategoriDal
+   public class EfKategoriDal:EfEntityRepositoryBase<Kategori,MiniBorsaContext>,IKategoriDal
     {
     }
 }
