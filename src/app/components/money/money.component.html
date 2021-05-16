@@ -1,0 +1,41 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Para ekle</h5></div>
+              <div class="card-body">
+                <form [formGroup]="moneyAddForm">
+                    <div class="mb-3">
+                        <label for="kullaniciId">kullanici Id</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="kullaniciId" 
+                            formControlName="kullaniciId" class="form-control" 
+                            placeholder="kullaıcı ID "/>
+                        </div>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="Miktari">Kategori</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="miktari" 
+                            formControlName="miktari" class="form-control" 
+                            placeholder="miktari"/>
+                        </div>
+                    </div>
+                 
+            
+
+
+                    
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

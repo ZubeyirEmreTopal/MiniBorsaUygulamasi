@@ -1,0 +1,36 @@
+<div *ngIf="dataLoaded==false" class="spinner-grow text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Urun Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama İfadesi Giriniz">
+  </div>
+  <div *ngIf="filterText" class="alert alert-success">
+      {{filterText}} aradınız.
+  </div>
+
+<table *ngIf="dataLoaded!=false" class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Sahip</th>
+            <th>Kategori</th>
+            <th>Miktar</th>
+            <th>Fiyat</th>
+            <th>Urun Adi</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products | filterPipe:filterText">
+            <td>{{product.urunId}}</td>
+            <td>{{product.kullaniciId}}</td>
+            <td>{{product.kategoriId}}</td>
+            <td>{{product.urunMiktari}}</td>
+            <td>{{product.urunFiyati}}</td>
+            <td>{{product.urunAdi |uppercase}}</td>
+            <th><button (click)="addToCart(product)" type="button"  class="btn btn-success btn-xs">SATIN AL</button></th> 
+        </tr>
+    </tbody>
+</table>
