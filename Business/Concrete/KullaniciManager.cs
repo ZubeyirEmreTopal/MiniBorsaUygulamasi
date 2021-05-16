@@ -26,9 +26,11 @@ namespace Business.Concrete
             return _kullaniciDal.GetClaims(kullanici);
         }
 
-        public Kullanici GetByEmail(string email)
+    
+
+        public Kullanici GetByMail(string email)
         {
-            return _kullaniciDal.Get(u => u.Email == email);
+            return _kullaniciDal.Get(u =>u.Email==email);
         }
     }
 }

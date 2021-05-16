@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -19,6 +20,9 @@ namespace Business.Constants
         public static string UrunEklendi = "ürün eklendi";
 
         public static string KategoriEklendi = "kategori Eklendi";
-        
+
+        public static string AuthorizationDenied = "";
+
+        public static string ParaEklendi { get; internal set; }
     }
 }

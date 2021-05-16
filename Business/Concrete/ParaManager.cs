@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concert;
 using System;
@@ -16,10 +18,11 @@ namespace Business.Concert
 
         }
 
-       public void Add(Para para)
+       public IResult Add(Para para)
         {
             _paraDal.Add(para);
 
+            return new SuccessResult(Messages.ParaEklendi);
         }
     }
 }

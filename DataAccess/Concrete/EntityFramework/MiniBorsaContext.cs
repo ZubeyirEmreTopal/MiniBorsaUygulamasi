@@ -23,7 +23,8 @@ namespace DataAccess.Concert.EntityFramework
        public DbSet<Kullanici> Kullanicilar { get; set; }
        public DbSet<OperationClaim> OperationClaims { get; set; }
        public DbSet<KullaniciOperationClaim> KullaniciOperationClaims { get; set; }
-        public DbSet<Kategori> Kategoriler { get; set; }
+       public DbSet<Kategori> Kategoriler { get; set; }
+       
     
 
     }

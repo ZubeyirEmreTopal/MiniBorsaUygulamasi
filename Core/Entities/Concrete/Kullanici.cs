@@ -8,6 +8,7 @@ namespace Core.Entities.Concrete
   public  class Kullanici:IEntity
     {
         public int Id { get; set; }
+        public int TC { get; set; }
         public string Adi { get; set; }
         public string Soyadi { get; set; }
         public string Email { get; set; }

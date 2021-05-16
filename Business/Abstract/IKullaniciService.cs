@@ -7,9 +7,9 @@ namespace Business.Abstract
 {
    public interface IKullaniciService
     {
-        List<OperationClaim> GetClaims(Kullanici kullanici);
-        void Add(Kullanici kullanici);
-        Kullanici GetByEmail(string email);
+        List<OperationClaim> GetClaims(Kullanici user);
+        void Add(Kullanici user);
+        Kullanici GetByMail(string email);
 
     }
 }

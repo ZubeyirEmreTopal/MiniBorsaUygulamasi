@@ -3,12 +3,9 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.Jwt;
+
 using Entities.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using Business.Constants;
+
 
 namespace Business.Concrete
 {
@@ -19,58 +16,60 @@ namespace Business.Concrete
 
         public AuthManager(IKullaniciService kullaniciService, ITokenHelper tokenHelper)
         {
-            _tokenHelper = tokenHelper;
             _kullaniciService = kullaniciService;
-
+            _tokenHelper = tokenHelper;
         }
 
-        public IDataResult<AccessToken> CreateAccessToken(Kullanici kullanici)
-        {
-            var claims = _kullaniciService.GetClaims(kullanici);
-            var accessToken = _tokenHelper.CreateToken(kullanici, claims);
-            return new SuccessDataResult<AccessToken>(accessToken,Messages.TokenOlusturuldu);
-        }
-
-        public IDataResult<Kullanici> Giris(KullaniciGirisDto kullaniciGirisDto)
-        {
-            var userToCheck = _kullaniciService.GetByEmail(kullaniciGirisDto.Email);
-            if (userToCheck == null)
-            {
-                return new ErrorDataResult<Kullanici>(Messages.BulunamayanKullanici);
-            }
-
-            if (!HashingHelper.VerifyPasswordHash(kullaniciGirisDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
-            {
-                return new ErrorDataResult<Kullanici>(Messages.ParolaHatasi);
-            }
-
-            return new SuccessDataResult<Kullanici>(userToCheck, Messages.BasariliGiris);
-        }
-
-        public IDataResult<Kullanici> Kayit(KullaniciKayitDto kullaniciKayitDto, string password)
+        public IDataResult<Kullanici> Register(KullaniciKayitDto kullaniciKayitDto, string password)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var kullanici = new Kullanici
+            var user = new Kullanici
             {
                 Email = kullaniciKayitDto.Email,
+                TC=kullaniciKayitDto.TC,
                 Adi = kullaniciKayitDto.Adi,
                 Soyadi = kullaniciKayitDto.Soyadi,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                Status = true
+                Status = true,
+                Adres=kullaniciKayitDto.Adres,
+
             };
-            _kullaniciService.Add(kullanici);
-            return new SuccessDataResult<Kullanici>(kullanici, Messages.KayitOlundu);
+            _kullaniciService.Add(user);
+            return new SuccessDataResult<Kullanici>(user, "Kayıt oldu");
         }
 
-        public IResult KullaniciExists(string email)
+        public IDataResult<Kullanici> Login(KullaniciGirisDto kullaniciGirisDto)
         {
-            if (_kullaniciService.GetByEmail(email) != null)
+            var userToCheck = _kullaniciService.GetByMail(kullaniciGirisDto.Email);
+            if (userToCheck == null)
             {
-                return new ErrorResult(Messages.MevcutKullanici);
+                return new ErrorDataResult<Kullanici>("Kullanıcı bulunamadı");
+            }
+
+            if (!HashingHelper.VerifyPasswordHash(kullaniciGirisDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            {
+                return new ErrorDataResult<Kullanici>("Parola hatası");
+            }
+
+            return new SuccessDataResult<Kullanici>(userToCheck, "Başarılı giriş");
+        }
+
+        public IResult UserExists(string email)
+        {
+            if (_kullaniciService.GetByMail(email) != null)
+            {
+                return new ErrorResult("Kullanıcı mevcut");
             }
             return new SuccessResult();
+        }
+
+        public IDataResult<AccessToken> CreateAccessToken(Kullanici user)
+        {
+            var claims = _kullaniciService.GetClaims(user);
+            var accessToken = _tokenHelper.CreateToken(user, claims);
+            return new SuccessDataResult<AccessToken>(accessToken, "Token oluşturuldu");
         }
     }
 }

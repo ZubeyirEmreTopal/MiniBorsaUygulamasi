@@ -5,6 +5,7 @@ using Business.Concert;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
 using DataAccess.Concert.EntityFramework;
 using DataAccess.Concrete.EntityFramework;
@@ -24,6 +25,13 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<KategoriManager>().As<IKategoriService>().SingleInstance();
             builder.RegisterType<EfKategoriDal>().As<IKategoriDal>().SingleInstance();
+
+            builder.RegisterType<KullaniciManager>().As<IKullaniciService>();
+            builder.RegisterType<EfKullaniciDal>().As<IKullaniciDal>();
+
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
 
 
