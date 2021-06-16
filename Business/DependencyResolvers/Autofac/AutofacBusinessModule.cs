@@ -26,12 +26,20 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<KategoriManager>().As<IKategoriService>().SingleInstance();
             builder.RegisterType<EfKategoriDal>().As<IKategoriDal>().SingleInstance();
 
+            builder.RegisterType<ParaManager>().As<IParaService>().SingleInstance();
+            builder.RegisterType<EfParaDal>().As<IParaDal>().SingleInstance();
+
+            builder.RegisterType<TeklifManager>().As<ITeklifService>().SingleInstance();
+            builder.RegisterType<EfTeklifDal>().As<ITeklifDal>().SingleInstance();
+
             builder.RegisterType<KullaniciManager>().As<IKullaniciService>();
             builder.RegisterType<EfKullaniciDal>().As<IKullaniciDal>();
 
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+         
 
 
 

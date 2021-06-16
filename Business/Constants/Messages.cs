@@ -23,6 +23,7 @@ namespace Business.Constants
 
         public static string AuthorizationDenied = "";
 
-        public static string ParaEklendi { get; internal set; }
+        public static string ParaEklendi="Para Eklendi";
+        public static string TeklifVerildi = "Teklif Verildi";
     }
 }
