@@ -10,5 +10,7 @@ namespace Entities.Concert
         public int Id { get; set; }
         public int KullaniciId { get; set; }
         public decimal Miktar { get; set; }
+        
+         public string DovizKodu {get ; set;}
     }
 }

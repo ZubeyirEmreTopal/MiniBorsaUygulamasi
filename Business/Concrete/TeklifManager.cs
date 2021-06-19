@@ -22,6 +22,8 @@ namespace Business.Concrete
         public IResult Add(Teklif teklif)
         {
             _teklifDal.Add(teklif);
+
+            //_urunbul(teklif);
             return new SuccessResult(Messages.TeklifVerildi);
         }
 

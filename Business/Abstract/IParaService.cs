@@ -9,5 +9,6 @@ namespace Business.Abstract
    public interface IParaService
     {
         IResult Add(Para para);
+        IResult Update(Para para);
     }
 }
