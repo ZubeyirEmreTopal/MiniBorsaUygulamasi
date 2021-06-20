@@ -26,17 +26,38 @@ namespace Business.Concert
             string Bugun = "https://www.tcmb.gov.tr/kurlar/today.xml";
             var xmldosya = new XmlDocument();
             xmldosya.Load(Bugun);
-            string dolarAlis = xmldosya.SelectSingleNode("Tarih_Date/Currency[@kod='USD']/BanknoteBuying").InnerXml;
+            DateTime tarih = Convert.ToDateTime(xmldosya.SelectSingleNode("//Tarih_Date").Attributes["Tarih"].Value);
+           decimal dolarAlis =Convert.ToDecimal(xmldosya.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerText.Replace(".",","));
+            decimal euroAlis = Convert.ToDecimal(xmldosya.SelectSingleNode("Tarih_Date/Currency[@Kod='EUR']/BanknoteSelling").InnerText.Replace(".", ","));
 
 
             if (para.DovizKodu == "USD")
             {
-                para.Miktar = Convert.ToInt32(dolarAlis) * para.Miktar;
+                
+                para.Miktar = dolarAlis * para.Miktar;
                 para.DovizKodu = "TRY";
             }
+            else if (para.DovizKodu == "EUR")
+            {
+                para.Miktar = euroAlis * para.Miktar;
+                para.DovizKodu = "TRY";
+            }
+
+
+
             MiniBorsaContext context = new MiniBorsaContext();
             Para varMı = context.Paralar.FirstOrDefault(p => p.Id == para.KullaniciId);
-           
+            Para muhabse = context.Paralar.FirstOrDefault(p => p.KullaniciId == 1003);
+
+            if (muhabse != null)
+            {
+                muhabse.Miktar += para.Miktar * 1 / 100;
+
+                _paraDal.Update(muhabse);
+                para.Miktar = para.Miktar - (para.Miktar * 1 / 100);
+
+            }
+
 
             if (varMı != null)
             {
@@ -51,9 +72,7 @@ namespace Business.Concert
            
 
 
-            //if (para.dovizkodu != "TRY")
-            //    para.Miktar = tldegerinial(para);
-            //_paraDal.Add(para);
+           
 
 
 

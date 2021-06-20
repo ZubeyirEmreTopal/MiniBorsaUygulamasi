@@ -26,6 +26,7 @@ namespace DataAccess.Concert.EntityFramework
        public DbSet<Kategori> Kategoriler { get; set; }
 
         public DbSet<Teklif> Teklifler { get; set; }
+        public DbSet<Satis> Satislar { get; set; }
        
     
 

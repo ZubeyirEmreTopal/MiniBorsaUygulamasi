@@ -9,14 +9,14 @@ namespace ConsoleUı
     {
         static void Main(string[] args)
         {
-            UrunManager urunManager = new UrunManager(new EfUrunDal());
-            Urun urun = new Urun();
+            //UrunManager urunManager = new UrunManager(new EfUrunDal());
+            //Urun urun = new Urun();
 
-            urun.KullaniciId = 2;
-            urun.UrunAdi = "Buğday";
-            urun.UrunFiyati = 2;
-            urun.UrunMiktari = 40;
-            urunManager.Add(urun);
+            //urun.KullaniciId = 2;
+            //urun.UrunAdi = "Buğday";
+            //urun.UrunFiyati = 2;
+            //urun.UrunMiktari = 40;
+            //urunManager.Add(urun);
         }
     }
 }
