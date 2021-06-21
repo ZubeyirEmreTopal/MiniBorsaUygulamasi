@@ -1,14 +1,14 @@
 ﻿using Core.Utilities.Results;
-using Entities.Concert;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Abstract
 {
-   public interface IParaService
+   public interface ITeklifService
     {
-        IResult Add(Para para);
-        IResult Update(Para para);
+        IResult Add(Teklif teklif);
+        IDataResult<List<Teklif>> GetAll();
     }
 }

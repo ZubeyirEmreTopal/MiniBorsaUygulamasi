@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Concert
+namespace Entities.Concrete
 {
-   public class Para:IEntity
+   public  class Satis:IEntity
     {
         public int Id { get; set; }
         public int KullaniciId { get; set; }
-        public decimal Miktar { get; set; }
-        
-         public string DovizKodu {get ; set;}
+        public int UrunId { get; set; }
+        public int Miktar { get; set; }
+        public DateTime Tarih { get; set; }
     }
 }

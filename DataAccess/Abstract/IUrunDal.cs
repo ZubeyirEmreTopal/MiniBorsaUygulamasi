@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
    public interface IUrunDal:IEntityRepository<Urun>
     {
         List<UrunDetayi> GetCarDetails(Expression<Func<UrunDetayi, bool>> filter = null);
+        //void Sat(int kullaniciId, int urunId);
     }
 }

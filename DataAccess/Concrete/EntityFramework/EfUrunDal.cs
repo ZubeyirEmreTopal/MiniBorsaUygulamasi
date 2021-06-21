@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Linq;
+using Core.Entities.Concrete;
 
 namespace DataAccess.Concert.EntityFramework
 {
@@ -34,5 +35,24 @@ namespace DataAccess.Concert.EntityFramework
 
             }
         }
+
+        //public void Sat(int kullaniciId, int urunId)
+        //{
+        //    using (MiniBorsaContext context=new MiniBorsaContext())
+        //    {
+        //        var result = context.Find<Urun>();
+
+        //        if (result.UrunId == urunId)
+        //        {
+        //            if (result.KullaniciId != kullaniciId)
+        //            {
+                        
+        //            }
+
+        //        }
+
+
+        //    }
+        //}
     }
 }
