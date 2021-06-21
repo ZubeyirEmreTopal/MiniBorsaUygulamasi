@@ -1,0 +1,50 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Para ekle</h5></div>
+              <div class="card-body">
+                <form [formGroup]="moneyAddForm">
+                    <div class="mb-3">
+                        <label for="kullaniciId">kullanici Id</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="kullaniciId" 
+                            formControlName="kullaniciId" class="form-control" 
+                            placeholder="kullaıcı ID "/>
+                        </div>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="miktar">Mikatri</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="miktar" 
+                            formControlName="miktar" class="form-control" 
+                            placeholder="Miktari"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dovizKodu">Doviz Kodu</label>
+                        <div class="form-group">
+                            <input type="text" 
+                            id="dovizKodu" 
+                            formControlName="dovizKodu" class="form-control" 
+                            placeholder="TRY-USD-EURO"/>
+                        </div>
+                    </div>
+                 
+            
+
+
+                    
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="moneyAdd()">Ekle</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,55 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Teklif Ver</h5></div>
+            <div class="card-body">
+                <form [formGroup]="teklifAddForm">
+                    <div class="mb-3">
+                        <label for="kullaniciId">kullanici ID</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="kullaniciId" 
+                            formControlName="kullaniciId" class="form-control" 
+                            placeholder="Kullaici Id"/>
+                        </div>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="urunId">Urun ID</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="urunId" 
+                            formControlName="urunId" class="form-control" 
+                            placeholder="UrunId"/>
+                        </div>
+                    </div>
+                   <div class="mb-3">
+                    <label for="miktar">Miktar</label>
+                    <div class="form-group">
+                        <input type="number" 
+                        id="miktar" 
+                        formControlName="miktar" class="form-control" 
+                        placeholder="Urun Miktari"/>
+                    </div>
+                   </div>
+                      <div  class="mb-3">
+                        <label for="urunFiyati"> Fiyatı</label>
+                        <div class="form-group">
+                            <input type="number" 
+                            id="fiyat" 
+                            formControlName="fiyat" class="form-control" 
+                            placeholder="Fiyatı"/>
+                        </div>
+                    </div>
+                    
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="teklifVer()">Teklif Ver</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
